@@ -16,14 +16,12 @@ const nftEvents = (nftContract, nftAddress, nftsLeft, TELEGRAM_API) => {
     .on("data", (event) => {
       if (event.returnValues["0"] === "0x0000000000000000000000000000000000000000") {
         nftsLeft--;
-        (async () => {
-          console.log("nft minted");
-          let groups = fs.readFileSync("./data/groupData.json", "utf-8");
-          groups = JSON.parse(groups);
-          for (let group of groups) {
-            sendMessage(TELEGRAM_API, group.chatId, `🔥 Another *Fifa NFT* has arrived! #${event.returnValues.tokenId}\n\n*⏳ Fifa NFT's Remaining:* ${nftsLeft}/1000`, false, ["View On TofuNFt", `https://tofunft.com/nft/bsc/${nftAddress}/${event.returnValues.tokenId}`]);
-          }
-        })();
+        console.log("nft minted");
+        let groups = fs.readFileSync("./data/groupData.json", "utf-8");
+        groups = JSON.parse(groups);
+        for (let group of groups) {
+          sendMessage(TELEGRAM_API, group.chatId, `🔥 Another *Rabbit NFT* has arrived! #${event.returnValues.tokenId}\n\n*⏳ Rabbit NFT's Remaining:* ${nftsLeft}/10000`, false, ["View On OpenSea", `https://opensea.io/assets/bsc/${nftAddress}/${event.returnValues.tokenId}`]);
+        }
       }
     })
     .on("error", (err) => {
