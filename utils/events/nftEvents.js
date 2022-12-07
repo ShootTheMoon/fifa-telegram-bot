@@ -20,7 +20,7 @@ const nftEvents = (nftContract, nftAddress, nftsLeft, TELEGRAM_API) => {
         let groups = fs.readFileSync("./data/groupData.json", "utf-8");
         groups = JSON.parse(groups);
         for (let group of groups) {
-          sendMessage(TELEGRAM_API, group.chatId, `🔥 Another *Rabbit NFT* has arrived! #${event.returnValues.tokenId}\n\n*⏳ Rabbit NFT's Remaining:* ${nftsLeft}/10000`, false, ["View On OpenSea", `https://opensea.io/assets/bsc/${nftAddress}/${event.returnValues.tokenId}`]);
+          sendMessage(TELEGRAM_API, group.chatId, `🐰 Another *Rabbit NFT* has arrived! #${event.returnValues.tokenId}\n\n*⏳ Rabbit NFT's Remaining:* ${nftsLeft}/10000`, false, ["View On OpenSea", `https://opensea.io/assets/bsc/${nftAddress}/${event.returnValues.tokenId}`]);
         }
       }
     })
