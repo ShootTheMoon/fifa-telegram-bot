@@ -65,7 +65,6 @@ const init = async () => {
 
     // Listen for nft contract events
     nftEvents(nftContract, nftAddress, nftsLeft, TELEGRAM_API);
-
   } catch (err) {
     console.log(err);
   }
@@ -94,7 +93,7 @@ app.post(URI, (req, res) => {
           if (nftID) {
             try {
               getNFTData(nftContract, nftID).then((data) => {
-                sendPhoto(TELEGRAM_API, chatId, data.imageURI, `*Owner:* https://bscscan.com/address/${data.owner}\n\n${data.traitValue}`, ["View On TofuNFt", `https://tofunft.com/nft/bsc/${nftAddress}/${nftID}`], messageId);
+                sendPhoto(TELEGRAM_API, chatId, data.imageURI, `*Owner:* https://bscscan.com/address/${data.owner}\n\n${data.traitValue}`, ["View On OpenSea", `https://opensea.io/assets/bsc/${nftAddress}/${nftID}`], messageId);
               });
             } catch (err) {
               console.log(err);
