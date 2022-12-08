@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 //Webhook
 let serverUrl = SERVER_URL;
 if (BUILD == "Test") {
-  serverUrl = "https://55f0-2601-589-4d80-16d0-9539-dff9-7fa0-13a8.ngrok.io";
+  serverUrl = "https://660b-2601-589-4d80-16d0-9539-dff9-7fa0-13a8.ngrok.io";
 }
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
-const URI = `/app2/${TOKEN}`;
+const URI = `/app3/${TOKEN}`;
 const WEBHOOK_URL = serverUrl + URI;
 
 // Websocket
@@ -76,6 +76,7 @@ app.post(URI, (req, res) => {
       const chatId = req.body.message.chat.id;
       const command = req.body.message.text;
       const messageId = req.body.message.message_id;
+      console.log(command);
       if (command === "/startbot") {
         if (checkIfAdded(chatId) === false) {
           const addToGroup = addToGroups(chatId);
